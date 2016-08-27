@@ -1,0 +1,31 @@
+#!/usr/bin/env ocaml
+#use "topfind";;
+#require "unix";;
+
+open Printf
+
+exception Failed of string
+
+let usage () =
+  print_endline "Usage: mktimes <test-targets>\n";
+  exit 1
+
+let run_test out test_target =
+  let t0 = Unix.gettimeofday () in
+  let rc = Sys.command ("make -C " ^ test_target ^ " test") in
+  if rc = 0 then
+    let t1 = Unix.gettimeofday () in
+    out test_target (t1 -. t0)
+  else
+    raise (Failed test_target)
+    
+let _ =
+  match Array.to_list Sys.argv with
+      _::tests ->
+	let dst = open_out "sample.txt" in
+	let out target delta =
+	  output_string dst 
+	    (sprintf "%s\t%0.3f\n" target delta) in
+	List.iter (run_test out) tests;
+	close_out dst
+    | _ -> usage ()
