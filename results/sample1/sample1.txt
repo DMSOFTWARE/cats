@@ -6,6 +6,7 @@ perl	3.717
 java	3.075
 mlton	2.911
 ocaml	2.856
+haskell 2.019
 rust	1.914
 python	1.872
 go	1.660
