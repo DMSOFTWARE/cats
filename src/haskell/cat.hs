@@ -1,9 +1,14 @@
 import System.IO
+import qualified Data.ByteString as BS
 
 main = do
-    withBinaryFile "../data" ReadMode (\handle -> do
-        -- hSetBuffering handle $ NoBuffering
-        -- hSetBuffering handle $ BlockBuffering Nothing
-        hSetBuffering handle $ BlockBuffering (Just (2 ^ 17))
-        contents <- hGetContents handle
-        putStr contents)
+    withBinaryFile "../data" ReadMode $ \handle -> do
+        let bufSize = 2 ^ 17
+            go = do
+                block <- BS.hGet handle bufSize
+                BS.hPut stdout block
+                if BS.null block
+                then pure ()
+                else go
+        hSetBuffering handle $ BlockBuffering (Just bufSize)
+        go
