@@ -1,24 +1,24 @@
    Welcome to Russians Lab for the Cats Preparation
 
-This is git repository (respect to Linus Torvalds) contains
-a number of code examples for research of input/output
-subsystem in the different computer languages (compilers
+This is git repository (respect to Linus Torvalds) containing
+a number of code examples for researching input/output
+subsystem implementations in different computer languages (compilers
 and interpreters).
 
-Because the tested code examples are very small, it is
-fairly correct to compare compilers and interpreters
+Due to very small size of the tested code examples, it is
+quite fair to compare compilers and interpreters
 in the single test set.
 
-Currently, we explore, how to works native I/O operations
-for every computation system on re-implementation of the
-utility GNU `cat`.
+Currently, we explore how native I/O operations work
+for each system under examination on re-implementation of the
+GNU `cat` utility.
 
-In behalf of performance, if it possible, we use a functions,
-which work with a big blocks of data.
+For the sake of performance, if it's possible, we use functions
+which operate on big blocks of data.
 
-Utility `strace` or her analogs can be used to explore system
-calls of executed programms.
+Utility `strace` or its analogs can be used to explore system
+calls of executing programs.
 
-For analyze the computation systems, based on virtual machines
+To analyze computation systems based on virtual machines
 with bytecode execution (e.g. JVM, BEAM, Parrot), a command
-`strace` can be called with the flag `-f`.
+`strace` can be called with the `-f` flag.
