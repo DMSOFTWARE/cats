@@ -1,12 +1,12 @@
 LANG	TIME(seconds)
 racket	13.670
 php	6.450
-erlang	6.415
 scala	4.650
 perl	3.717
 java	3.075
 mlton	2.911
 ocaml	2.856
+erlang	2.272
 haskell 2.019
 rust	1.914
 python	1.872
