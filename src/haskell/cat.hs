@@ -1,14 +1,15 @@
 import System.IO
-import qualified Data.ByteString as BS
+import Foreign.Marshal.Alloc (allocaBytes)
 
 main = do
-    withBinaryFile "../data" ReadMode $ \handle -> do
-        let bufSize = 2 ^ 17
-            go = do
-                block <- BS.hGet handle bufSize
-                BS.hPut stdout block
-                if BS.null block
+    withBinaryFile "../data" ReadMode $ \handle ->
+      allocaBytes bufSize $ \buf -> do
+        let go = do
+              n <- hGetBuf handle buf bufSize
+              hPutBuf stdout buf n
+              if n < bufSize
                 then pure ()
                 else go
-        hSetBuffering handle $ BlockBuffering (Just bufSize)
+        hSetBuffering handle $ NoBuffering
         go
+  where bufSize = 2 ^ 17
