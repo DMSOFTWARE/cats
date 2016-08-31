@@ -1,13 +1,13 @@
-#!/usr/bin/env escript
--mode(compile).
+-module(cat).
+-export([main/1]).
 
 copy_blocks(In, Out) ->
     case file:read(In, 131072) of
         {ok, Data} ->
             case file:write(Out, Data) of
-                ok -> 
+                ok ->
                     copy_blocks(In, Out);
-                {error, _Reason} = Error -> 
+                {error, _Reason} = Error ->
                     Error
             end;
         eof ->
