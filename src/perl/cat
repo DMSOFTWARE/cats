@@ -1,4 +1,14 @@
-#!/usr/bin/perl -w
-$/ = \131072;
-open(F,"../data");
-while(<F>){print}
+#! /usr/bin/perl -w
+
+my $buffer;
+open my ($f), "../data" or die;
+while (1) {
+	sysread $f, $buffer, 131072;
+	if (length($buffer) > 0) {
+		syswrite STDOUT, $buffer or die;
+	}
+	else {
+		goto done;
+	}
+}
+done:

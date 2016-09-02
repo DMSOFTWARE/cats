@@ -1,8 +1,4 @@
 LANG	TIME(seconds)
-racket	13.670
-php	6.450
-scala	4.650
-perl(b)	3.717
 java	3.075
 mlton	2.911
 ocaml	2.856

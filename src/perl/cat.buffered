@@ -1,0 +1,4 @@
+#!/usr/bin/perl -w
+$/ = \131072;
+open(F,"../data");
+while(<F>){print}
