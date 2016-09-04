@@ -18,7 +18,7 @@
 (defun cat2 ()
   (let ((buffer (make-array 131072 :element-type '(unsigned-byte 8) :fill-pointer 131072 :adjustable nil)))
     (with-open-file
-	(out "/dev/null" :direction :output :element-type '(unsigned-byte 8) :if-exists :supersede :if-does-not-exist :create)
+	(out "/dev/stdout" :direction :output :element-type '(unsigned-byte 8) :if-exists :supersede :if-does-not-exist :create)
 	(with-open-file
 	    (in #p"../data" :element-type '(unsigned-byte 8))
 	  (loop for read = (read-sequence buffer in)
