@@ -1,4 +1,4 @@
-#!/usr/bin/racket -f
+#lang racket/base
 
 (define buffer-size 131072)
 

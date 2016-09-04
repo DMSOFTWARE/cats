@@ -1,5 +1,5 @@
 all:
 test:
-	./cat.scm ../data > /dev/null
+	racket -q -r cat.rkt ../data > /dev/null
 version:
 	racket --version > version
