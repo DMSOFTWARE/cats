@@ -16,11 +16,13 @@
     (close in)))
 
 (defun cat2 ()
-  (let ((buffer (make-array 131072 :element-type '(unsigned-byte 8))))
+  (let ((buffer (make-array 131072 :element-type '(unsigned-byte 8) :fill-pointer 131072 :adjustable nil)))
     (with-open-file
-     (in #p"../data" :element-type '(unsigned-byte 8))
-     (loop for read = (read-sequence buffer in)
-	   while (plusp read)
-	   do (write-sequence buffer *standard-output* :end read)))))
+	(out "/dev/null" :direction :output :element-type '(unsigned-byte 8) :if-exists :supersede :if-does-not-exist :create)
+	(with-open-file
+	    (in #p"../data" :element-type '(unsigned-byte 8))
+	  (loop for read = (read-sequence buffer in)
+	     while (plusp read)
+	     do (write-sequence buffer out :end read))))))
 
 (cat2)
