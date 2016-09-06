@@ -1,5 +1,6 @@
 all:
+	raco exe cat.rkt
 test:
-	racket -q -r cat.rkt ../data > /dev/null
+	./cat >/dev/null
 version:
 	racket --version > version
