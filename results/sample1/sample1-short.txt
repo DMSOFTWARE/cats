@@ -4,9 +4,9 @@ mlton	2.911
 ocaml	2.856
 erlang	2.272
 haskell 1.916
-rust	1.914
 python	1.872
 perl	1.767
 go	1.660
+rust	1.649
 cpp	1.646
 c	1.610
